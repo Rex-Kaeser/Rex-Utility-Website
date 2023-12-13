@@ -187,6 +187,13 @@
       }
     }
 
+    function openLink(i){
+      const link = localStorage.getItem(i + "link");
+      const search = document.getElementById("searchbar").value;
+      const url = link.replace("%rep%", search);
+      window.open(url, '_blank').focus();
+    }
+
     function testCategoryList(categories, test){
       found = false;
       for (let i = 0; i < categories.length; i++){
@@ -239,7 +246,7 @@
             const link = localStorage.getItem(v + "link");
 
             if (category == categories[i]){
-              categorySection += "<div class=\"p-4 row-span-2\"><strong  class=\"block uppercase text-md leading-4 font-medium text-slate-300 mb-2\">" + name + "</strong><div class=\"flex-tile-raw bg-gradient-to-r from-gray-800 via-slate-600 to-gray-800 gradient-animate\"><iframe webpageRep=\"" + link + "\" class=\"search-page w-full h-96 m-0 rounded\" src=\"\" title=\"LINKIE\"></iframe></div></div>"
+              categorySection += "<div class=\"p-4 row-span-2\"><a onclick=\"openLink('" + v + "')\" class=\"block uppercase text-md leading-4 font-medium text-slate-300 mb-2\">" + name + "</a><div class=\"flex-tile-raw bg-gradient-to-r from-gray-800 via-slate-600 to-gray-800 gradient-animate\"><iframe webpageRep=\"" + link + "\" class=\"search-page w-full h-96 m-0 rounded\" src=\"\" title=\"LINKIE\"></iframe></div></div>"
             }
           }
         }
